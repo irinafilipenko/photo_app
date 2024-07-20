@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:photo_app/components/theme.dart';
 import 'package:photo_app/models/photo_model.dart';
 
 class CustomCard extends StatelessWidget {
@@ -8,12 +9,13 @@ class CustomCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final customColors = Theme.of(context).extension<CustomColors>();
     return Container(
       height: 88,
       margin: EdgeInsets.symmetric(vertical: 5),
       padding: EdgeInsets.all(10.0),
       decoration: BoxDecoration(
-        border: Border.all(color: Color(0xFFC3C6CF)),
+        border: Border.all(color: customColors!.outlineVariant),
         borderRadius: BorderRadius.circular(8),
       ),
       child: Row(
@@ -35,10 +37,9 @@ class CustomCard extends StatelessWidget {
                 Text(
                   beer.photographer,
                   style: TextStyle(
-                      fontFamily: "Roboto",
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
-                      color: Color(0xFF1A1C1E)),
+                      color: customColors.onSurface),
                   overflow: TextOverflow.ellipsis,
                   maxLines: 1,
                 ),
@@ -46,10 +47,9 @@ class CustomCard extends StatelessWidget {
                 Text(
                   beer.name,
                   style: TextStyle(
-                      fontFamily: "Roboto",
                       fontSize: 14,
                       fontWeight: FontWeight.w400,
-                      color: Color(0xFF43474E)),
+                      color: customColors.onSurfaceVariant),
                   overflow: TextOverflow.ellipsis,
                   maxLines: 2,
                 ),

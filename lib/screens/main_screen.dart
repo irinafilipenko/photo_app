@@ -1,6 +1,7 @@
 import 'package:photo_app/bloc/photo_bloc.dart';
 import 'package:photo_app/components/custom_card.dart';
 import 'package:photo_app/components/custom_driver.dart';
+import 'package:photo_app/components/theme.dart';
 import 'package:photo_app/models/photo_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,9 +9,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final customColors = Theme.of(context).extension<CustomColors>();
     return Scaffold(
       appBar: AppBar(
-        title: Text('List page'),
+        title: Text(
+          'List page',
+          style: TextStyle(
+              fontSize: 22,
+              fontWeight: FontWeight.w400,
+              color: customColors!.onSurface),
+        ),
         backgroundColor: Colors.white,
         actions: [
           IconButton(
@@ -58,10 +66,10 @@ class MainScreen extends StatelessWidget {
                                 child: Text(
                                   group['letter'],
                                   style: TextStyle(
-                                      fontFamily: "Roboto",
+                                      // fontFamily: "Roboto",
                                       fontSize: 16,
                                       fontWeight: FontWeight.w500,
-                                      color: Color(0xFF0061A6)),
+                                      color: customColors.primary),
                                 ),
                               ),
                               Expanded(

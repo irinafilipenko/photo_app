@@ -1,9 +1,10 @@
 import 'dart:async';
 
 import 'package:photo_app/bloc/auth_bloc.dart';
-import 'package:photo_app/components/cusom_button.dart';
+import 'package:photo_app/components/custom_button.dart';
 import 'package:photo_app/components/custom_sneck_bar.dart';
 import 'package:photo_app/components/custom_text_field.dart';
+import 'package:photo_app/components/theme.dart';
 import 'package:photo_app/utils/animation_routing.dart';
 import 'package:photo_app/utils/validation.dart';
 import 'package:flutter/material.dart';
@@ -79,6 +80,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final customColors = Theme.of(context).extension<CustomColors>();
     return Scaffold(
       body: BlocListener<AuthBloc, AuthState>(
         listener: (context, state) {
@@ -111,7 +113,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   style: TextStyle(
                       fontFamily: "Roboto",
                       fontSize: 32,
-                      fontWeight: FontWeight.w400)),
+                      fontWeight: FontWeight.w400,
+                      color: customColors!.onSurface)),
               SizedBox(height: 60),
               CustomTextField(
                 controller: _emailController,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:photo_app/components/theme.dart';
 
 class CustomButton extends StatelessWidget {
   final String text;
@@ -14,12 +15,13 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final customColors = Theme.of(context).extension<CustomColors>();
     return InkWell(
       onTap: isLoading ? null : onPressed,
       child: Container(
         height: 40,
         decoration: BoxDecoration(
-          color: Color(0xFF0061A6),
+          color: customColors!.surfaceTint,
           borderRadius: BorderRadius.circular(100),
         ),
         alignment: Alignment.center,
@@ -29,13 +31,14 @@ class CustomButton extends StatelessWidget {
                 height: 20, // Adjust the height as needed
                 child: CircularProgressIndicator(
                   strokeWidth: 2.0, // Adjust the stroke width as needed
-                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                  valueColor:
+                      AlwaysStoppedAnimation<Color>(customColors.onPrimary),
                 ),
               )
             : Text(
                 text,
                 style: TextStyle(
-                  color: Colors.white,
+                  color: customColors.onPrimary,
                   fontFamily: "Roboto",
                   fontSize: 14,
                   fontWeight: FontWeight.w500,

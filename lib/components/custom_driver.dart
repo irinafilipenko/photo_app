@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:photo_app/components/custom_alert_dialog.dart';
+import 'package:photo_app/components/theme.dart';
 
 class CustomDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final customColors = Theme.of(context).extension<CustomColors>();
     return Drawer(
       backgroundColor: Color(0xFFF4F3F7),
       child: SafeArea(
@@ -21,10 +23,9 @@ class CustomDrawer extends StatelessWidget {
                 child: Text(
                   "Profile",
                   style: TextStyle(
-                      fontFamily: "Roboto",
                       fontSize: 14,
                       fontWeight: FontWeight.w500,
-                      color: Color(0xFF43474E)),
+                      color: customColors!.onSurfaceVariant),
                 ),
               ),
               Column(
@@ -44,10 +45,9 @@ class CustomDrawer extends StatelessWidget {
                           Text(
                             'User name',
                             style: TextStyle(
-                                fontFamily: "Roboto",
                                 fontSize: 16,
                                 fontWeight: FontWeight.w400,
-                                color: Color(0xFF1A1C1E)),
+                                color: customColors.onSurface),
                           ),
                           Text(
                             'example@email.com',
@@ -55,7 +55,7 @@ class CustomDrawer extends StatelessWidget {
                                 fontFamily: "Roboto",
                                 fontSize: 12,
                                 fontWeight: FontWeight.w400,
-                                color: Color(0xFF1A1C1E)),
+                                color: customColors.onSurface),
                           ),
                         ],
                       ),
@@ -78,7 +78,7 @@ class CustomDrawer extends StatelessWidget {
                         fontFamily: "Roboto",
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
-                        color: Color(0xFF43474E)),
+                        color: customColors.onSurfaceVariant),
                   ),
                   onTap: () {
                     showDialog(

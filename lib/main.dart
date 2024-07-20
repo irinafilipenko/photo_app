@@ -1,5 +1,6 @@
 import 'package:photo_app/bloc/auth_bloc.dart';
 import 'package:photo_app/bloc/photo_bloc.dart';
+import 'package:photo_app/components/theme.dart';
 import 'package:photo_app/repositories/photo_repository.dart';
 import 'package:photo_app/repositories/user_repository.dart';
 import 'package:photo_app/screens/login_screen.dart';
@@ -35,11 +36,14 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Photo App',
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          scaffoldBackgroundColor:
-              Colors.white, // Set the background color to white
-          primarySwatch: Colors.blue,
-        ),
+        theme: lightTheme, // Apply the light theme
+        darkTheme: darkTheme, // Apply the dark theme
+        themeMode: ThemeMode.system,
+        // theme: ThemeData(
+        //   scaffoldBackgroundColor:
+        //       Colors.white, // Set the background color to white
+        //   primarySwatch: Colors.blue,
+        // ),
         initialRoute: '/',
         routes: {
           '/': (context) => LoginScreen(),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:photo_app/components/theme.dart';
 
 class CustomTextField extends StatelessWidget {
   final TextEditingController controller;
@@ -23,20 +24,26 @@ class CustomTextField extends StatelessWidget {
     this.isObscure = false,
   });
 
-  OutlineInputBorder _getBorder(bool isValid, bool isFocused, bool isLoading) {
+  OutlineInputBorder _getBorder(
+      bool isValid, bool isFocused, bool isLoading, context) {
+    final customColors = Theme.of(context).extension<CustomColors>();
     return OutlineInputBorder(
       borderSide: BorderSide(
         color: isLoading
-            ? Color(0xFF79747E).withOpacity(0.12)
+            ? customColors!.onSurface
+            // ? Color(0xFF79747E).withOpacity(0.12)
             : isValid
-                ? (isFocused ? Color(0xFF0061A6) : Color(0xFF73777F))
-                : Color(0xFFBA1A1A),
+                ? (focusNode.hasFocus
+                    ? customColors!.primary
+                    : customColors!.onSurfaceVariant)
+                : customColors!.error,
       ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    final customColors = Theme.of(context).extension<CustomColors>();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -60,25 +67,28 @@ class CustomTextField extends StatelessWidget {
               labelStyle: TextStyle(
                 fontFamily: "Roboto",
                 color: isLoading
-                    ? Color(0xFF79747E).withOpacity(0.12)
+                    ? customColors!.onSurfaceVariant
+                    // ? Color(0xFF79747E).withOpacity(0.12)
                     : isValid
                         ? (focusNode.hasFocus
-                            ? Color(0xFF0061A6)
-                            : Color(0xFF73777F))
-                        : Color(0xFFBA1A1A),
+                            ? customColors!.primary
+                            : customColors!.onSurfaceVariant)
+                        : customColors!.error,
               ),
               hintText: hintText,
               hintStyle: TextStyle(
                   fontFamily: "Roboto",
                   fontSize: 16,
+                  fontWeight: FontWeight.w400,
                   color: isLoading
-                      ? Color(0xFF79747E).withOpacity(0.12)
-                      : Color(0xFF73777F)),
+                      ? customColors!.onSurface
+                      : customColors.onSurfaceVariant),
               floatingLabelBehavior: FloatingLabelBehavior.always,
-              enabledBorder: _getBorder(isValid, false, isLoading),
-              focusedBorder: _getBorder(isValid, focusNode.hasFocus, isLoading),
-              errorBorder: _getBorder(false, false, isLoading),
-              focusedErrorBorder: _getBorder(false, true, isLoading),
+              enabledBorder: _getBorder(isValid, false, isLoading, context),
+              focusedBorder:
+                  _getBorder(isValid, focusNode.hasFocus, isLoading, context),
+              errorBorder: _getBorder(false, false, isLoading, context),
+              focusedErrorBorder: _getBorder(false, true, isLoading, context),
               // fillColor: Colors.grey.shade200,
               // filled: isLoading,
             ),
