@@ -10,27 +10,28 @@ class CustomAlertDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     final customColors = Theme.of(context).extension<CustomColors>();
     return AlertDialog(
+      backgroundColor: customColors!.background,
       title: Text(
         'Log out',
         style: TextStyle(
             fontFamily: "Roboto",
             fontSize: 24,
             fontWeight: FontWeight.w400,
-            color: Color(0xFF1B1B1F)),
+            color: customColors.onSurface),
       ),
       content: Text('Are you sure you want to logout?',
           style: TextStyle(
               fontFamily: "Roboto",
               fontSize: 14,
               fontWeight: FontWeight.w400,
-              color: Color(0xFF44474F))),
+              color: customColors.onSurfaceVariant)),
       actions: [
         TextButton(
           child: Text('Cancel',
               style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
-                  color: customColors!.secondary)),
+                  color: customColors.secondary)),
           onPressed: () {
             Navigator.of(context).pop();
           },

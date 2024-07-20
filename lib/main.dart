@@ -39,11 +39,7 @@ class MyApp extends StatelessWidget {
         theme: lightTheme, // Apply the light theme
         darkTheme: darkTheme, // Apply the dark theme
         themeMode: ThemeMode.system,
-        // theme: ThemeData(
-        //   scaffoldBackgroundColor:
-        //       Colors.white, // Set the background color to white
-        //   primarySwatch: Colors.blue,
-        // ),
+
         initialRoute: '/',
         routes: {
           '/': (context) => LoginScreen(),

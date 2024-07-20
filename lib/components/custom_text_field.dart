@@ -30,8 +30,7 @@ class CustomTextField extends StatelessWidget {
     return OutlineInputBorder(
       borderSide: BorderSide(
         color: isLoading
-            ? customColors!.onSurface
-            // ? Color(0xFF79747E).withOpacity(0.12)
+            ? Color(0xFF79747E).withOpacity(0.12)
             : isValid
                 ? (focusNode.hasFocus
                     ? customColors!.primary
@@ -56,10 +55,12 @@ class CustomTextField extends StatelessWidget {
           },
           child: TextField(
             style: TextStyle(
-                fontFamily: "Roboto", fontSize: 16, color: Color(0xFF1A1C1E)),
+                fontFamily: "Roboto",
+                fontSize: 16,
+                color: customColors!.onSurface),
             cursorColor: isValid || focusNode.hasFocus
-                ? Color(0xFF0061A6)
-                : Color(0xFFBA1A1A),
+                ? customColors.primary
+                : customColors.error,
             controller: controller,
             // enabled: !isLoading,
             decoration: InputDecoration(
@@ -67,13 +68,12 @@ class CustomTextField extends StatelessWidget {
               labelStyle: TextStyle(
                 fontFamily: "Roboto",
                 color: isLoading
-                    ? customColors!.onSurfaceVariant
-                    // ? Color(0xFF79747E).withOpacity(0.12)
+                    ? Color(0xFF79747E).withOpacity(0.12)
                     : isValid
                         ? (focusNode.hasFocus
-                            ? customColors!.primary
-                            : customColors!.onSurfaceVariant)
-                        : customColors!.error,
+                            ? customColors.primary
+                            : customColors.onSurfaceVariant)
+                        : customColors.error,
               ),
               hintText: hintText,
               hintStyle: TextStyle(
@@ -81,13 +81,15 @@ class CustomTextField extends StatelessWidget {
                   fontSize: 16,
                   fontWeight: FontWeight.w400,
                   color: isLoading
-                      ? customColors!.onSurface
+                      ? Color(0xFF79747E).withOpacity(0.12)
                       : customColors.onSurfaceVariant),
               floatingLabelBehavior: FloatingLabelBehavior.always,
               enabledBorder: _getBorder(isValid, false, isLoading, context),
               focusedBorder:
                   _getBorder(isValid, focusNode.hasFocus, isLoading, context),
               errorBorder: _getBorder(false, false, isLoading, context),
+              // errorStyle: TextStyle(
+              //     color: isValid ? customColors!.primary : customColors!.error),
               focusedErrorBorder: _getBorder(false, true, isLoading, context),
               // fillColor: Colors.grey.shade200,
               // filled: isLoading,
@@ -103,7 +105,7 @@ class CustomTextField extends StatelessWidget {
           Text(
             '$labelText is incorrect',
             style: TextStyle(
-                fontFamily: "Roboto", fontSize: 12, color: Color(0xFFBA1A1A)),
+                fontFamily: "Roboto", fontSize: 12, color: customColors.error),
           ),
       ],
     );

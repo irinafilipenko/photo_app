@@ -23,7 +23,7 @@ SnackBar CustomSnackBar({required String message, required context}) {
               // Hide the SnackBar
               ScaffoldMessenger.of(context).hideCurrentSnackBar();
             },
-            child: Icon(Icons.close, color: customColors!.onInverseSurface),
+            child: Icon(Icons.close, color: customColors.onInverseSurface),
           ),
         ],
       ),

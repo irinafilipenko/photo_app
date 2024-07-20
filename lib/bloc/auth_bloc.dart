@@ -20,7 +20,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       final user = await userRepository.login(event.email, event.password);
       emit(AuthAuthenticated(user: user));
     } catch (error) {
-      emit(AuthError("Login failed. Please try again."));
+      emit(const AuthError("Login failed. Please try again."));
     }
   }
 }

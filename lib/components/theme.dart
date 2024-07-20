@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 
 ThemeData darkTheme = ThemeData(
   fontFamily: 'Roboto',
-  scaffoldBackgroundColor: Color(0xFFFDFCFF),
+  scaffoldBackgroundColor: Color(0xFF1A1C1E),
   appBarTheme: const AppBarTheme(
     systemOverlayStyle: SystemUiOverlayStyle(
       statusBarBrightness: Brightness.dark, //<-- For iOS SEE HERE (dark icons)
@@ -46,7 +46,8 @@ ThemeData darkTheme = ThemeData(
 );
 
 ThemeData lightTheme = ThemeData(
-  scaffoldBackgroundColor: Colors.white, // Set the background color to white
+  scaffoldBackgroundColor:
+      Color(0xFFFDFCFF), // Set the background color to white
   fontFamily: 'Roboto',
   appBarTheme: const AppBarTheme(
     systemOverlayStyle: SystemUiOverlayStyle(

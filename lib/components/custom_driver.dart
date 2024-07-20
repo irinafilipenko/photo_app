@@ -8,7 +8,7 @@ class CustomDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     final customColors = Theme.of(context).extension<CustomColors>();
     return Drawer(
-      backgroundColor: Color(0xFFF4F3F7),
+      backgroundColor: customColors!.background,
       child: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
@@ -25,7 +25,7 @@ class CustomDrawer extends StatelessWidget {
                   style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w500,
-                      color: customColors!.onSurfaceVariant),
+                      color: customColors.onSurfaceVariant),
                 ),
               ),
               Column(
@@ -71,6 +71,7 @@ class CustomDrawer extends StatelessWidget {
                     'assets/icons/icon.svg', // Path to your SVG file in assets
                     width: 16,
                     height: 16,
+                    color: customColors.onSurfaceVariant,
                   ),
                   title: Text(
                     'Log out',

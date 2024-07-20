@@ -19,7 +19,7 @@ class PhotoBloc extends Bloc<PhotoEvent, PhotoState> {
       final beers = await beerRepository.fetchBeers();
       emit(PhotoLoaded(beers: beers));
     } catch (error) {
-      emit(PhotoError("Failed to fetch beers."));
+      emit(const PhotoError("Failed to fetch beers."));
     }
   }
 }

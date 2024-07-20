@@ -12,17 +12,24 @@ class MainScreen extends StatelessWidget {
     final customColors = Theme.of(context).extension<CustomColors>();
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(
+            color: customColors!
+                .onSurfaceVariant // Set the color of the hamburger menu icon to red
+            ),
         title: Text(
           'List page',
           style: TextStyle(
               fontSize: 22,
               fontWeight: FontWeight.w400,
-              color: customColors!.onSurface),
+              color: customColors.onSurface),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: customColors.background,
         actions: [
           IconButton(
-            icon: Icon(Icons.refresh),
+            icon: Icon(
+              Icons.refresh,
+              color: customColors.onSurfaceVariant,
+            ),
             onPressed: () {
               context.read<PhotoBloc>().add(FetchBeers());
             },
