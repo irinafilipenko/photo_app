@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:photo_app/components/custom_alert_dialog.dart';
+import 'package:photo_app/components/widgets/custom_alert_dialog.dart';
 import 'package:photo_app/components/theme.dart';
 
 class CustomDrawer extends StatelessWidget {

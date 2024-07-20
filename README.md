@@ -1,5 +1,9 @@
 # photo_app
 
+An application with authorization with a list of photos sorted alphabetically. It has a dark and light theme depending on the device settings.
+To install dependencies, you need to go to the pubspec.yaml file and click the pub get button.
+Main working branch dev
+
 [//]: # (![Project]&#40;./assets/images/main_background.png&#41;)
 <img src="./assets/images/screen1.png" alt="Project Logo" width="200" />
 <img src="./assets/images/screen2.png" alt="Project Logo" width="200" />

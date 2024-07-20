@@ -1,6 +1,6 @@
 import 'package:photo_app/bloc/photo_bloc.dart';
-import 'package:photo_app/components/custom_card.dart';
-import 'package:photo_app/components/custom_driver.dart';
+import 'package:photo_app/components/widgets/custom_card.dart';
+import 'package:photo_app/components/widgets/custom_driver.dart';
 import 'package:photo_app/components/theme.dart';
 import 'package:photo_app/models/photo_model.dart';
 import 'package:flutter/material.dart';

@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:photo_app/bloc/auth_bloc.dart';
-import 'package:photo_app/components/custom_button.dart';
-import 'package:photo_app/components/custom_sneck_bar.dart';
-import 'package:photo_app/components/custom_text_field.dart';
+import 'package:photo_app/components/widgets/custom_button.dart';
+import 'package:photo_app/components/widgets/custom_sneck_bar.dart';
+import 'package:photo_app/components/widgets/custom_text_field.dart';
 import 'package:photo_app/components/theme.dart';
 import 'package:photo_app/utils/animation_routing.dart';
 import 'package:photo_app/utils/validation.dart';
@@ -14,10 +14,10 @@ class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  LoginScreenState createState() => LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
@@ -104,7 +104,7 @@ class _LoginScreenState extends State<LoginScreen> {
               _isPasswordValid = true;
             });
             ScaffoldMessenger.of(context).showSnackBar(
-              CustomSnackBar(message: state.message, context: context),
+              customSnackBar(message: state.message, context: context),
             );
           }
         },
