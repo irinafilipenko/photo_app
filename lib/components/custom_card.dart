@@ -5,15 +5,15 @@ import 'package:photo_app/models/photo_model.dart';
 class CustomCard extends StatelessWidget {
   final PhotoModel beer;
 
-  const CustomCard({Key? key, required this.beer}) : super(key: key);
+  const CustomCard({super.key, required this.beer});
 
   @override
   Widget build(BuildContext context) {
     final customColors = Theme.of(context).extension<CustomColors>();
     return Container(
       height: 88,
-      margin: EdgeInsets.symmetric(vertical: 5),
-      padding: EdgeInsets.all(10.0),
+      margin: const EdgeInsets.symmetric(vertical: 5),
+      padding: const EdgeInsets.all(10.0),
       decoration: BoxDecoration(
         border: Border.all(color: customColors!.outlineVariant),
         borderRadius: BorderRadius.circular(8),
@@ -29,7 +29,7 @@ class CustomCard extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          SizedBox(width: 10),
+          const SizedBox(width: 10),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

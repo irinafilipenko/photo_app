@@ -19,7 +19,8 @@ class MyApp extends StatelessWidget {
   final UserRepository userRepository;
   final PhotoRepository beerRepository;
 
-  MyApp({required this.userRepository, required this.beerRepository});
+  const MyApp(
+      {super.key, required this.userRepository, required this.beerRepository});
 
   @override
   Widget build(BuildContext context) {
@@ -42,8 +43,8 @@ class MyApp extends StatelessWidget {
 
         initialRoute: '/',
         routes: {
-          '/': (context) => LoginScreen(),
-          '/main': (context) => MainScreen(),
+          '/': (context) => const LoginScreen(),
+          '/main': (context) => const MainScreen(),
         },
       ),
     );

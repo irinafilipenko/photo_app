@@ -12,7 +12,8 @@ class CustomTextField extends StatelessWidget {
   final Function(String) onValidate;
   final bool isObscure;
 
-  CustomTextField({
+  const CustomTextField({
+    super.key,
     required this.controller,
     required this.focusNode,
     required this.labelText,
@@ -30,7 +31,7 @@ class CustomTextField extends StatelessWidget {
     return OutlineInputBorder(
       borderSide: BorderSide(
         color: isLoading
-            ? Color(0xFF79747E).withOpacity(0.12)
+            ? const Color(0xFF79747E).withOpacity(0.12)
             : isValid
                 ? (focusNode.hasFocus
                     ? customColors!.primary
@@ -68,7 +69,7 @@ class CustomTextField extends StatelessWidget {
               labelStyle: TextStyle(
                 fontFamily: "Roboto",
                 color: isLoading
-                    ? Color(0xFF79747E).withOpacity(0.12)
+                    ? const Color(0xFF79747E).withOpacity(0.12)
                     : isValid
                         ? (focusNode.hasFocus
                             ? customColors.primary
@@ -81,7 +82,7 @@ class CustomTextField extends StatelessWidget {
                   fontSize: 16,
                   fontWeight: FontWeight.w400,
                   color: isLoading
-                      ? Color(0xFF79747E).withOpacity(0.12)
+                      ? const Color(0xFF79747E).withOpacity(0.12)
                       : customColors.onSurfaceVariant),
               floatingLabelBehavior: FloatingLabelBehavior.always,
               enabledBorder: _getBorder(isValid, false, isLoading, context),
@@ -100,7 +101,7 @@ class CustomTextField extends StatelessWidget {
             },
           ),
         ),
-        SizedBox(height: 5),
+        const SizedBox(height: 5),
         if (!isValid)
           Text(
             '$labelText is incorrect',

@@ -11,6 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
@@ -27,17 +29,19 @@ class _LoginScreenState extends State<LoginScreen> {
   bool _isLoading = false;
 
   void _validateEmail(String email) {
-    if (!_isLoading)
+    if (!_isLoading) {
       setState(() {
         _isEmailValid = Validation.validateEmail(email);
       });
+    }
   }
 
   void _validatePassword(String password) {
-    if (!_isLoading)
+    if (!_isLoading) {
       setState(() {
         _isPasswordValid = Validation.validatePassword(password);
       });
+    }
   }
 
   @override
@@ -85,7 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
       body: BlocListener<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state is AuthAuthenticated) {
-            Timer(Duration(microseconds: 10), () {
+            Timer(const Duration(microseconds: 10), () {
               setState(() {
                 _isLoading = false;
               });
@@ -115,7 +119,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       fontSize: 32,
                       fontWeight: FontWeight.w400,
                       color: customColors!.onSurface)),
-              SizedBox(height: 60),
+              const SizedBox(height: 60),
               CustomTextField(
                 controller: _emailController,
                 focusNode: _emailFocusNode,
@@ -130,7 +134,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 },
                 onValidate: _validateEmail,
               ),
-              SizedBox(height: 36),
+              const SizedBox(height: 36),
               CustomTextField(
                 controller: _passwordController,
                 focusNode: _passwordFocusNode,
@@ -146,13 +150,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 onValidate: _validatePassword,
                 isObscure: true,
               ),
-              SizedBox(height: 40),
+              const SizedBox(height: 40),
               CustomButton(
                 text: 'Log in',
                 isLoading: _isLoading,
                 onPressed: _handleLogin,
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
             ],
           ),
         ),

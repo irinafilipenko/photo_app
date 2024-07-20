@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MainScreen extends StatelessWidget {
+  const MainScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     final customColors = Theme.of(context).extension<CustomColors>();
@@ -36,23 +38,23 @@ class MainScreen extends StatelessWidget {
           ),
         ],
       ),
-      drawer: CustomDrawer(),
+      drawer: const CustomDrawer(),
       body: BlocBuilder<PhotoBloc, PhotoState>(
         builder: (context, state) {
           if (state is PhotoLoading) {
-            return Center(
+            return const Center(
                 child: CircularProgressIndicator(color: Color(0xFF0061A6)));
           } else if (state is PhotoLoaded) {
             final beers = state.beers;
             if (beers.isEmpty) {
-              return Center(child: Text('No items found'));
+              return const Center(child: Text('No items found'));
             }
 
             // Group beers by the first letter of their name
             final groupedBeers = _groupBeersByFirstLetter(beers);
 
             return ScrollConfiguration(
-              behavior: ScrollBehavior().copyWith(overscroll: false),
+              behavior: const ScrollBehavior().copyWith(overscroll: false),
               child: Scrollbar(
                 child: Padding(
                   padding: const EdgeInsets.all(16),
@@ -67,7 +69,7 @@ class MainScreen extends StatelessWidget {
                             children: [
                               Container(
                                 width: 20, // Adjust the width as necessary
-                                margin: EdgeInsets.only(
+                                margin: const EdgeInsets.only(
                                     top: 5,
                                     right: 5), // Adjust the margin as necessary
                                 child: Text(

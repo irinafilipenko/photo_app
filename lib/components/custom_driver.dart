@@ -4,6 +4,8 @@ import 'package:photo_app/components/custom_alert_dialog.dart';
 import 'package:photo_app/components/theme.dart';
 
 class CustomDrawer extends StatelessWidget {
+  const CustomDrawer({super.key});
+
   @override
   Widget build(BuildContext context) {
     final customColors = Theme.of(context).extension<CustomColors>();
@@ -17,7 +19,7 @@ class CustomDrawer extends StatelessWidget {
 
             // padding: EdgeInsets.zero,
             children: [
-              Container(
+              SizedBox(
                 height: 56,
                 // padding: EdgeInsets.only(left: 10),
                 child: Text(
@@ -33,12 +35,12 @@ class CustomDrawer extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      CircleAvatar(
+                      const CircleAvatar(
                         radius: 28,
                         backgroundImage: NetworkImage(
                             'https://randomuser.me/api/portraits/men/1.jpg'),
                       ),
-                      SizedBox(width: 10),
+                      const SizedBox(width: 10),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -63,7 +65,7 @@ class CustomDrawer extends StatelessWidget {
                   ),
                 ],
               ),
-              Spacer(),
+              const Spacer(),
               Flexible(
                 flex: 0,
                 child: ListTile(
@@ -71,6 +73,7 @@ class CustomDrawer extends StatelessWidget {
                     'assets/icons/icon.svg', // Path to your SVG file in assets
                     width: 16,
                     height: 16,
+                    // ignore: deprecated_member_use
                     color: customColors.onSurfaceVariant,
                   ),
                   title: Text(
@@ -85,7 +88,7 @@ class CustomDrawer extends StatelessWidget {
                     showDialog(
                       context: context,
                       builder: (BuildContext context) {
-                        return CustomAlertDialog();
+                        return const CustomAlertDialog();
                       },
                     );
                   },

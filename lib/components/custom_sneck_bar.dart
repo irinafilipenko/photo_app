@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:photo_app/components/theme.dart';
 
-SnackBar CustomSnackBar({required String message, required context}) {
+CustomSnackBar({required String message, required context}) async {
   final customColors = Theme.of(context).extension<CustomColors>();
   return SnackBar(
-    content: Container(
+    content: SizedBox(
       height: 20,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -30,7 +30,7 @@ SnackBar CustomSnackBar({required String message, required context}) {
     ),
     backgroundColor: customColors.onInverseSurface,
     behavior: SnackBarBehavior.floating,
-    margin: EdgeInsets.only(bottom: 20, left: 16, right: 16),
-    duration: Duration(hours: 1), // Make the SnackBar persistent
+    margin: const EdgeInsets.only(bottom: 20, left: 16, right: 16),
+    duration: const Duration(hours: 1), // Make the SnackBar persistent
   );
 }
