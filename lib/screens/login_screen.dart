@@ -115,7 +115,6 @@ class LoginScreenState extends State<LoginScreen> {
             children: [
               Text('Sign in',
                   style: TextStyle(
-                      fontFamily: "Roboto",
                       fontSize: 32,
                       fontWeight: FontWeight.w400,
                       color: customColors!.onSurface)),

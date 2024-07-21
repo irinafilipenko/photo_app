@@ -7,19 +7,19 @@ part 'photo_event.dart';
 part 'photo_state.dart';
 
 class PhotoBloc extends Bloc<PhotoEvent, PhotoState> {
-  final PhotoRepository beerRepository;
+  final PhotoRepository photoRepository;
 
-  PhotoBloc({required this.beerRepository}) : super(PhotoInitial()) {
-    on<FetchBeers>(_onFetchBeers);
+  PhotoBloc({required this.photoRepository}) : super(PhotoInitial()) {
+    on<FetchPhoto>(_onFetchPhoto);
   }
 
-  void _onFetchBeers(FetchBeers event, Emitter<PhotoState> emit) async {
+  void _onFetchPhoto(FetchPhoto event, Emitter<PhotoState> emit) async {
     emit(PhotoLoading());
     try {
-      final beers = await beerRepository.fetchBeers();
-      emit(PhotoLoaded(beers: beers));
+      final photos = await photoRepository.fetchPhoto();
+      emit(PhotoLoaded(photos: photos));
     } catch (error) {
-      emit(const PhotoError("Failed to fetch beers."));
+      emit(const PhotoError("Failed to fetch photo."));
     }
   }
 }

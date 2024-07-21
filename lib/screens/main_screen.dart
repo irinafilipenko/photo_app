@@ -5,6 +5,7 @@ import 'package:photo_app/components/theme.dart';
 import 'package:photo_app/models/photo_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:photo_app/utils/group_photos.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
@@ -14,10 +15,7 @@ class MainScreen extends StatelessWidget {
     final customColors = Theme.of(context).extension<CustomColors>();
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(
-            color: customColors!
-                .onSurfaceVariant // Set the color of the hamburger menu icon to red
-            ),
+        iconTheme: IconThemeData(color: customColors!.onSurfaceVariant),
         title: Text(
           'List page',
           style: TextStyle(
@@ -33,7 +31,7 @@ class MainScreen extends StatelessWidget {
               color: customColors.onSurfaceVariant,
             ),
             onPressed: () {
-              context.read<PhotoBloc>().add(FetchBeers());
+              context.read<PhotoBloc>().add(FetchPhoto());
             },
           ),
         ],
@@ -45,13 +43,13 @@ class MainScreen extends StatelessWidget {
             return const Center(
                 child: CircularProgressIndicator(color: Color(0xFF0061A6)));
           } else if (state is PhotoLoaded) {
-            final beers = state.beers;
-            if (beers.isEmpty) {
+            final photos = state.photos;
+            if (photos.isEmpty) {
               return const Center(child: Text('No items found'));
             }
 
             // Group beers by the first letter of their name
-            final groupedBeers = _groupBeersByFirstLetter(beers);
+            final groupedPhotos = groupPhotosByFirstLetter(photos);
 
             return ScrollConfiguration(
               behavior: const ScrollBehavior().copyWith(overscroll: false),
@@ -59,9 +57,9 @@ class MainScreen extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(16),
                   child: ListView.builder(
-                    itemCount: groupedBeers.length,
+                    itemCount: groupedPhotos.length,
                     itemBuilder: (context, index) {
-                      final group = groupedBeers[index];
+                      final group = groupedPhotos[index];
                       return Column(
                         children: [
                           Row(
@@ -105,30 +103,5 @@ class MainScreen extends StatelessWidget {
         },
       ),
     );
-  }
-
-  List<Map<String, dynamic>> _groupBeersByFirstLetter(List<PhotoModel> beers) {
-    beers.sort(
-        (a, b) => a.photographer.compareTo(b.photographer)); // Sorting by name
-    final Map<String, List<PhotoModel>> groupedMap = {};
-
-    for (var beer in beers) {
-      final letter = beer.photographer.isNotEmpty
-          ? beer.photographer[0].toUpperCase()
-          : '#';
-      if (!groupedMap.containsKey(letter)) {
-        groupedMap[letter] = [];
-      }
-      groupedMap[letter]!.add(beer);
-    }
-
-    final groupedBeers = groupedMap.entries
-        .map((entry) => {'letter': entry.key, 'beers': entry.value})
-        .toList();
-
-    groupedBeers.sort(
-        (a, b) => (a['letter'] as String).compareTo(b['letter'] as String));
-
-    return groupedBeers;
   }
 }

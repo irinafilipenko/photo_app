@@ -12,12 +12,12 @@ class PhotoInitial extends PhotoState {}
 class PhotoLoading extends PhotoState {}
 
 class PhotoLoaded extends PhotoState {
-  final List<PhotoModel> beers;
+  final List<PhotoModel> photos;
 
-  const PhotoLoaded({required this.beers});
+  const PhotoLoaded({required this.photos});
 
   @override
-  List<Object> get props => [beers];
+  List<Object> get props => [photos];
 }
 
 class PhotoError extends PhotoState {

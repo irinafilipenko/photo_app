@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<PhotoBloc>(
           create: (context) =>
-              PhotoBloc(beerRepository: beerRepository)..add(FetchBeers()),
+              PhotoBloc(photoRepository: beerRepository)..add(FetchPhoto()),
         ),
       ],
       child: MaterialApp(
