@@ -1,21 +1,22 @@
 import 'package:photo_app/models/photo_model.dart';
 
-List<Map<String, dynamic>> groupPhotosByFirstLetter(List<PhotoModel> photos) {
+List<Map<String, dynamic>> groupPhotosByAlphabet(List<PhotoModel> photos) {
   photos.sort(
       (a, b) => a.photographer.compareTo(b.photographer)); // Sorting by name
   final Map<String, List<PhotoModel>> groupedMap = {};
 
-  for (var beer in photos) {
-    final letter =
-        beer.photographer.isNotEmpty ? beer.photographer[0].toUpperCase() : '#';
+  for (var photo in photos) {
+    final letter = photo.photographer.isNotEmpty
+        ? photo.photographer[0].toUpperCase()
+        : '#';
     if (!groupedMap.containsKey(letter)) {
       groupedMap[letter] = [];
     }
-    groupedMap[letter]!.add(beer);
+    groupedMap[letter]!.add(photo);
   }
 
   final groupedBeers = groupedMap.entries
-      .map((entry) => {'letter': entry.key, 'beers': entry.value})
+      .map((entry) => {'letter': entry.key, 'photos': entry.value})
       .toList();
 
   groupedBeers

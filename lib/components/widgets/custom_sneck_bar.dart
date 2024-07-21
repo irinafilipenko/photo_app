@@ -13,14 +13,12 @@ customSnackBar({required String message, required context}) async {
               child: Text(
             message,
             style: TextStyle(
-                fontFamily: "Roboto",
                 fontSize: 14,
                 fontWeight: FontWeight.w400,
                 color: customColors!.onInverseSurface),
           )),
           GestureDetector(
             onTap: () {
-              // Hide the SnackBar
               ScaffoldMessenger.of(context).hideCurrentSnackBar();
             },
             child: Icon(Icons.close, color: customColors.onInverseSurface),
@@ -31,6 +29,6 @@ customSnackBar({required String message, required context}) async {
     backgroundColor: customColors.onInverseSurface,
     behavior: SnackBarBehavior.floating,
     margin: const EdgeInsets.only(bottom: 20, left: 16, right: 16),
-    duration: const Duration(hours: 1), // Make the SnackBar persistent
+    duration: const Duration(hours: 1),
   );
 }

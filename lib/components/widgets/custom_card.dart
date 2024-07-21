@@ -3,9 +3,9 @@ import 'package:photo_app/components/theme.dart';
 import 'package:photo_app/models/photo_model.dart';
 
 class CustomCard extends StatelessWidget {
-  final PhotoModel beer;
+  final PhotoModel photo;
 
-  const CustomCard({super.key, required this.beer});
+  const CustomCard({super.key, required this.photo});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class CustomCard extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(8),
             child: Image.network(
-              beer.imageUrl,
+              photo.imageUrl,
               width: 56,
               height: 56,
               fit: BoxFit.cover,
@@ -35,7 +35,7 @@ class CustomCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  beer.photographer,
+                  photo.photographer,
                   style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
@@ -45,7 +45,7 @@ class CustomCard extends StatelessWidget {
                 ),
                 // SizedBox(height: 2),
                 Text(
-                  beer.name,
+                  photo.name,
                   style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w400,

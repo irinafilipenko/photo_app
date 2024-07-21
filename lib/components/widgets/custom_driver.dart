@@ -16,12 +16,9 @@ class CustomDrawer extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-
-            // padding: EdgeInsets.zero,
             children: [
               SizedBox(
                 height: 56,
-                // padding: EdgeInsets.only(left: 10),
                 child: Text(
                   "Profile",
                   style: TextStyle(
@@ -54,7 +51,6 @@ class CustomDrawer extends StatelessWidget {
                           Text(
                             'example@email.com',
                             style: TextStyle(
-                                fontFamily: "Roboto",
                                 fontSize: 12,
                                 fontWeight: FontWeight.w400,
                                 color: customColors.onSurface),
@@ -70,7 +66,7 @@ class CustomDrawer extends StatelessWidget {
                 flex: 0,
                 child: ListTile(
                   leading: SvgPicture.asset(
-                    'assets/icons/icon.svg', // Path to your SVG file in assets
+                    'assets/icons/icon.svg',
                     width: 16,
                     height: 16,
                     // ignore: deprecated_member_use
@@ -79,7 +75,6 @@ class CustomDrawer extends StatelessWidget {
                   title: Text(
                     'Log out',
                     style: TextStyle(
-                        fontFamily: "Roboto",
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
                         color: customColors.onSurfaceVariant),

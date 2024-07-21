@@ -14,14 +14,12 @@ class CustomAlertDialog extends StatelessWidget {
       title: Text(
         'Log out',
         style: TextStyle(
-            fontFamily: "Roboto",
             fontSize: 24,
             fontWeight: FontWeight.w400,
             color: customColors.onSurface),
       ),
       content: Text('Are you sure you want to logout?',
           style: TextStyle(
-              fontFamily: "Roboto",
               fontSize: 14,
               fontWeight: FontWeight.w400,
               color: customColors.onSurfaceVariant)),

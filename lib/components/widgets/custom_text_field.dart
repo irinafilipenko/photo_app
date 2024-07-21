@@ -55,10 +55,7 @@ class CustomTextField extends StatelessWidget {
             }
           },
           child: TextField(
-            style: TextStyle(
-                fontFamily: "Roboto",
-                fontSize: 16,
-                color: customColors!.onSurface),
+            style: TextStyle(fontSize: 16, color: customColors!.onSurface),
             cursorColor: isValid || focusNode.hasFocus
                 ? customColors.primary
                 : customColors.error,
@@ -67,7 +64,6 @@ class CustomTextField extends StatelessWidget {
             decoration: InputDecoration(
               labelText: labelText,
               labelStyle: TextStyle(
-                fontFamily: "Roboto",
                 color: isLoading
                     ? const Color(0xFF79747E).withOpacity(0.12)
                     : isValid
@@ -78,7 +74,6 @@ class CustomTextField extends StatelessWidget {
               ),
               hintText: hintText,
               hintStyle: TextStyle(
-                  fontFamily: "Roboto",
                   fontSize: 16,
                   fontWeight: FontWeight.w400,
                   color: isLoading

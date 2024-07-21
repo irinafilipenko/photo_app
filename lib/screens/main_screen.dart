@@ -49,7 +49,7 @@ class MainScreen extends StatelessWidget {
             }
 
             // Group beers by the first letter of their name
-            final groupedPhotos = groupPhotosByFirstLetter(photos);
+            final groupedPhotos = groupPhotosByAlphabet(photos);
 
             return ScrollConfiguration(
               behavior: const ScrollBehavior().copyWith(overscroll: false),
@@ -82,8 +82,9 @@ class MainScreen extends StatelessWidget {
                               Expanded(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: group['beers'].map<Widget>((beer) {
-                                    return CustomCard(beer: beer);
+                                  children:
+                                      group['photos'].map<Widget>((photo) {
+                                    return CustomCard(photo: photo);
                                   }).toList(),
                                 ),
                               ),

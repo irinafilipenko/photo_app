@@ -27,10 +27,10 @@ class CustomButton extends StatelessWidget {
         alignment: Alignment.center,
         child: isLoading
             ? SizedBox(
-                width: 20, // Adjust the width as needed
-                height: 20, // Adjust the height as needed
+                width: 20,
+                height: 20,
                 child: CircularProgressIndicator(
-                  strokeWidth: 2.0, // Adjust the stroke width as needed
+                  strokeWidth: 2.0,
                   valueColor:
                       AlwaysStoppedAnimation<Color>(customColors.onPrimary),
                 ),
@@ -38,10 +38,9 @@ class CustomButton extends StatelessWidget {
             : Text(
                 text,
                 style: TextStyle(
-                  color: customColors.onPrimary,
-                  fontFamily: "Roboto",
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
+                  color: customColors.onPrimary,
                 ),
               ),
       ),
