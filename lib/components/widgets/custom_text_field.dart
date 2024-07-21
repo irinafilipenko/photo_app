@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:photo_app/components/theme.dart';
 
 class CustomTextField extends StatelessWidget {
   final TextEditingController controller;
@@ -11,7 +12,8 @@ class CustomTextField extends StatelessWidget {
   final Function(String) onValidate;
   final bool isObscure;
 
-  CustomTextField({
+  const CustomTextField({
+    super.key,
     required this.controller,
     required this.focusNode,
     required this.labelText,
@@ -23,20 +25,25 @@ class CustomTextField extends StatelessWidget {
     this.isObscure = false,
   });
 
-  OutlineInputBorder _getBorder(bool isValid, bool isFocused, bool isLoading) {
+  OutlineInputBorder _getBorder(
+      bool isValid, bool isFocused, bool isLoading, context) {
+    final customColors = Theme.of(context).extension<CustomColors>();
     return OutlineInputBorder(
       borderSide: BorderSide(
         color: isLoading
-            ? Color(0xFF79747E).withOpacity(0.12)
+            ? const Color(0xFF79747E).withOpacity(0.12)
             : isValid
-                ? (isFocused ? Color(0xFF0061A6) : Color(0xFF73777F))
-                : Color(0xFFBA1A1A),
+                ? (focusNode.hasFocus
+                    ? customColors!.primary
+                    : customColors!.onSurfaceVariant)
+                : customColors!.error,
       ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    final customColors = Theme.of(context).extension<CustomColors>();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -48,37 +55,38 @@ class CustomTextField extends StatelessWidget {
             }
           },
           child: TextField(
-            style: TextStyle(
-                fontFamily: "Roboto", fontSize: 16, color: Color(0xFF1A1C1E)),
+            style: TextStyle(fontSize: 16, color: customColors!.onSurface),
             cursorColor: isValid || focusNode.hasFocus
-                ? Color(0xFF0061A6)
-                : Color(0xFFBA1A1A),
+                ? customColors.primary
+                : customColors.error,
             controller: controller,
             // enabled: !isLoading,
             decoration: InputDecoration(
               labelText: labelText,
               labelStyle: TextStyle(
-                fontFamily: "Roboto",
                 color: isLoading
-                    ? Color(0xFF79747E).withOpacity(0.12)
+                    ? const Color(0xFF79747E).withOpacity(0.12)
                     : isValid
                         ? (focusNode.hasFocus
-                            ? Color(0xFF0061A6)
-                            : Color(0xFF73777F))
-                        : Color(0xFFBA1A1A),
+                            ? customColors.primary
+                            : customColors.onSurfaceVariant)
+                        : customColors.error,
               ),
               hintText: hintText,
               hintStyle: TextStyle(
-                  fontFamily: "Roboto",
                   fontSize: 16,
+                  fontWeight: FontWeight.w400,
                   color: isLoading
-                      ? Color(0xFF79747E).withOpacity(0.12)
-                      : Color(0xFF73777F)),
+                      ? const Color(0xFF79747E).withOpacity(0.12)
+                      : customColors.onSurfaceVariant),
               floatingLabelBehavior: FloatingLabelBehavior.always,
-              enabledBorder: _getBorder(isValid, false, isLoading),
-              focusedBorder: _getBorder(isValid, focusNode.hasFocus, isLoading),
-              errorBorder: _getBorder(false, false, isLoading),
-              focusedErrorBorder: _getBorder(false, true, isLoading),
+              enabledBorder: _getBorder(isValid, false, isLoading, context),
+              focusedBorder:
+                  _getBorder(isValid, focusNode.hasFocus, isLoading, context),
+              errorBorder: _getBorder(false, false, isLoading, context),
+              // errorStyle: TextStyle(
+              //     color: isValid ? customColors!.primary : customColors!.error),
+              focusedErrorBorder: _getBorder(false, true, isLoading, context),
               // fillColor: Colors.grey.shade200,
               // filled: isLoading,
             ),
@@ -88,12 +96,12 @@ class CustomTextField extends StatelessWidget {
             },
           ),
         ),
-        SizedBox(height: 5),
+        const SizedBox(height: 5),
         if (!isValid)
           Text(
             '$labelText is incorrect',
             style: TextStyle(
-                fontFamily: "Roboto", fontSize: 12, color: Color(0xFFBA1A1A)),
+                fontFamily: "Roboto", fontSize: 12, color: customColors.error),
           ),
       ],
     );

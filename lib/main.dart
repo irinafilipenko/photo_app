@@ -1,5 +1,6 @@
 import 'package:photo_app/bloc/auth_bloc.dart';
 import 'package:photo_app/bloc/photo_bloc.dart';
+import 'package:photo_app/components/theme.dart';
 import 'package:photo_app/repositories/photo_repository.dart';
 import 'package:photo_app/repositories/user_repository.dart';
 import 'package:photo_app/screens/login_screen.dart';
@@ -18,7 +19,8 @@ class MyApp extends StatelessWidget {
   final UserRepository userRepository;
   final PhotoRepository beerRepository;
 
-  MyApp({required this.userRepository, required this.beerRepository});
+  const MyApp(
+      {super.key, required this.userRepository, required this.beerRepository});
 
   @override
   Widget build(BuildContext context) {
@@ -29,21 +31,20 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<PhotoBloc>(
           create: (context) =>
-              PhotoBloc(beerRepository: beerRepository)..add(FetchBeers()),
+              PhotoBloc(photoRepository: beerRepository)..add(FetchPhoto()),
         ),
       ],
       child: MaterialApp(
         title: 'Photo App',
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          scaffoldBackgroundColor:
-              Colors.white, // Set the background color to white
-          primarySwatch: Colors.blue,
-        ),
+        theme: lightTheme, // Apply the light theme
+        darkTheme: darkTheme, // Apply the dark theme
+        themeMode: ThemeMode.system,
+
         initialRoute: '/',
         routes: {
-          '/': (context) => LoginScreen(),
-          '/main': (context) => MainScreen(),
+          '/': (context) => const LoginScreen(),
+          '/main': (context) => const MainScreen(),
         },
       ),
     );

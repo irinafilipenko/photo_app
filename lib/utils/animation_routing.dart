@@ -3,10 +3,8 @@ import 'package:flutter/material.dart';
 
 Route createRoute() {
   return PageRouteBuilder(
-    transitionDuration:
-        Duration(milliseconds: 2000), // Set the duration to 1 second
-    pageBuilder: (context, animation, secondaryAnimation) =>
-        MainScreen(), // Replace with your target screen
+    transitionDuration: const Duration(milliseconds: 2000),
+    pageBuilder: (context, animation, secondaryAnimation) => const MainScreen(),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
       const begin = 0.0;
       const end = 1.0;
