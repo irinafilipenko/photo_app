@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:photo_app/components/constants.dart';
 import 'package:photo_app/models/user_model.dart';
 import 'package:photo_app/service/user_service.dart';

@@ -1,6 +1,6 @@
 import 'package:photo_app/components/constants.dart';
 import 'package:photo_app/models/photo_model.dart';
-import 'package:dio/dio.dart';
+
 import 'package:photo_app/service/photo_service.dart';
 
 class PhotoRepository {
