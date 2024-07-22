@@ -10,17 +10,18 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   final userRepository = UserRepository();
-  final beerRepository = PhotoRepository();
+  final photoRepository = PhotoRepository();
 
-  runApp(MyApp(userRepository: userRepository, beerRepository: beerRepository));
+  runApp(
+      MyApp(userRepository: userRepository, photoRepository: photoRepository));
 }
 
 class MyApp extends StatelessWidget {
   final UserRepository userRepository;
-  final PhotoRepository beerRepository;
+  final PhotoRepository photoRepository;
 
   const MyApp(
-      {super.key, required this.userRepository, required this.beerRepository});
+      {super.key, required this.userRepository, required this.photoRepository});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<PhotoBloc>(
           create: (context) =>
-              PhotoBloc(photoRepository: beerRepository)..add(FetchPhoto()),
+              PhotoBloc(photoRepository: photoRepository)..add(FetchPhoto()),
         ),
       ],
       child: MaterialApp(
@@ -40,7 +41,6 @@ class MyApp extends StatelessWidget {
         theme: lightTheme, // Apply the light theme
         darkTheme: darkTheme, // Apply the dark theme
         themeMode: ThemeMode.system,
-
         initialRoute: '/',
         routes: {
           '/': (context) => const LoginScreen(),
