@@ -1,3 +1,17 @@
+class PhotoResponse {
+  final List<PhotoModel> photos;
+
+  PhotoResponse({required this.photos});
+
+  factory PhotoResponse.fromJson(Map<String, dynamic> json) {
+    var photosList = json['photos'] as List;
+    List<PhotoModel> photos =
+        photosList.map((i) => PhotoModel.fromJson(i)).toList();
+
+    return PhotoResponse(photos: photos);
+  }
+}
+
 class PhotoModel {
   final String name;
   final String imageUrl;

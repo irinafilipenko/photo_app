@@ -12,7 +12,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 void main() {
   final dio = Dio();
   final userRepository = UserRepository(dio);
-  final photoRepository = PhotoRepository();
+  final photoRepository = PhotoRepository(dio);
 
   runApp(
       MyApp(userRepository: userRepository, photoRepository: photoRepository));
