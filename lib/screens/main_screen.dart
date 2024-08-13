@@ -47,8 +47,6 @@ class MainScreen extends StatelessWidget {
             if (photos.isEmpty) {
               return const Center(child: Text('No items found'));
             }
-
-            // Group beers by the first letter of their name
             final groupedPhotos = groupPhotosByAlphabet(photos);
 
             return ScrollConfiguration(

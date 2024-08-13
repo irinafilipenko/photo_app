@@ -103,9 +103,9 @@ class LoginScreenState extends State<LoginScreen> {
               _isEmailValid = true;
               _isPasswordValid = true;
             });
-            ScaffoldMessenger.of(context).showSnackBar(
-              customSnackBar(message: state.message, context: context),
-            );
+            // ScaffoldMessenger.of(context).showSnackBar(
+            //   customSnackBar(message: state.message, context: context),
+            // );
           }
         },
         child: Padding(

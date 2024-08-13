@@ -15,12 +15,12 @@ List<Map<String, dynamic>> groupPhotosByAlphabet(List<PhotoModel> photos) {
     groupedMap[letter]!.add(photo);
   }
 
-  final groupedBeers = groupedMap.entries
+  final groupedPhotos = groupedMap.entries
       .map((entry) => {'letter': entry.key, 'photos': entry.value})
       .toList();
 
-  groupedBeers
+  groupedPhotos
       .sort((a, b) => (a['letter'] as String).compareTo(b['letter'] as String));
 
-  return groupedBeers;
+  return groupedPhotos;
 }

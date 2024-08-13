@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:photo_app/bloc/auth_bloc.dart';
 import 'package:photo_app/bloc/photo_bloc.dart';
 import 'package:photo_app/components/theme.dart';
@@ -9,7 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
-  final userRepository = UserRepository();
+  final dio = Dio();
+  final userRepository = UserRepository(dio);
   final photoRepository = PhotoRepository();
 
   runApp(
