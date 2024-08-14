@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:injectable/injectable.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:photo_app/data/models/user_model.dart';
@@ -7,6 +8,7 @@ import 'package:photo_app/data/repositories/user_repository.dart';
 part 'auth_event.dart';
 part 'auth_state.dart';
 
+@lazySingleton
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final UserRepository userRepository;
 

@@ -1,5 +1,5 @@
 import 'package:bloc_action_listener/bloc_actions_mixin.dart';
-
+import 'package:injectable/injectable.dart';
 import 'package:photo_app/data/models/photo_model.dart';
 import 'package:photo_app/data/repositories/photo_repository.dart';
 import 'package:bloc/bloc.dart';
@@ -26,6 +26,7 @@ part 'photo_state.dart';
 //     }
 //   }
 // }
+@lazySingleton
 class PhotoBloc extends Bloc<PhotoEvent, PhotoState>
     with BlocActionsMixin<PhotoState, PhotoAction> {
   final PhotoRepository photoRepository;

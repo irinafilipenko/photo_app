@@ -1,9 +1,11 @@
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 import 'package:photo_app/presentation/components/constants.dart';
 import 'package:photo_app/data/models/photo_model.dart';
 
 import 'package:photo_app/data/service/photo_service.dart';
 
+@lazySingleton
 class PhotoRepository {
   final PhotoService _photoService;
 

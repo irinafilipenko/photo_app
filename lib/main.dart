@@ -1,7 +1,9 @@
 import 'package:dio/dio.dart';
+import 'package:get_it/get_it.dart';
 import 'package:photo_app/app_router.dart';
 import 'package:photo_app/data/models/login_model.dart';
 import 'package:photo_app/data/service/local_data_storage.dart';
+import 'package:photo_app/injectable_config.dart';
 import 'package:photo_app/presentation/bloc/auth_bloc.dart';
 import 'package:photo_app/presentation/bloc/photo_bloc.dart';
 import 'package:photo_app/presentation/bloc/splash_bloc.dart';
@@ -13,52 +15,28 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:realm/realm.dart';
 
 void main() {
-  final config = Configuration.local([LoginModel.schema]);
-  final realm = Realm(config);
+  configureDependencies();
 
-  // Создаем экземпляр LocalDataStorageImpl и передаем ему Realm
-  final localDataStorage = LocalDataStorageImpl(realm);
-
-  final dio = Dio();
-  final userRepository = UserRepository(dio, localDataStorage);
-  final photoRepository = PhotoRepository(dio);
-
-  final _appRouter = AppRouter();
-
-  runApp(MyApp(
-    appRouter: _appRouter,
-    userRepository: userRepository,
-    photoRepository: photoRepository,
-    localDataStorage: localDataStorage,
-  ));
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final UserRepository userRepository;
-  final PhotoRepository photoRepository;
-  final AppRouter appRouter;
-  final LocalDataStorage localDataStorage;
-
-  const MyApp(
-      {super.key,
-      required this.appRouter,
-      required this.userRepository,
-      required this.photoRepository,
-      required this.localDataStorage});
+  const MyApp({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
         BlocProvider<SplashBloc>(
-          create: (context) => SplashBloc(localDataStorage: localDataStorage),
+          create: (context) => GetIt.I<SplashBloc>(),
         ),
         BlocProvider<AuthBloc>(
-          create: (context) => AuthBloc(userRepository: userRepository),
+          create: (context) => GetIt.I<AuthBloc>(),
         ),
         BlocProvider<PhotoBloc>(
-          create: (context) =>
-              PhotoBloc(photoRepository: photoRepository)..add(FetchPhoto()),
+          create: (context) => GetIt.I<PhotoBloc>()..add(FetchPhoto()),
         ),
       ],
       child: MaterialApp.router(
@@ -67,12 +45,7 @@ class MyApp extends StatelessWidget {
         theme: lightTheme, // Apply the light theme
         darkTheme: darkTheme, // Apply the dark theme
         themeMode: ThemeMode.system,
-        routerConfig: appRouter.config(),
-        // initialRoute: '/',
-        // routes: {
-        //   '/': (context) => const LoginScreen(),
-        //   '/main': (context) => const MainScreen(),
-        // },
+        routerConfig: GetIt.I<AppRouter>().config(),
       ),
     );
   }

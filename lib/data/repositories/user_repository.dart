@@ -3,7 +3,9 @@ import 'package:photo_app/data/models/login_model.dart';
 import 'package:photo_app/data/models/user_model.dart';
 import 'package:photo_app/data/service/local_data_storage.dart';
 import 'package:photo_app/data/service/user_service.dart';
+import 'package:injectable/injectable.dart';
 
+@lazySingleton
 class UserRepository {
   final UserService _userService;
   final LocalDataStorage _localDataStorage;

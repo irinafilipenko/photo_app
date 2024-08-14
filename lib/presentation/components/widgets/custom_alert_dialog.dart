@@ -1,11 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:photo_app/app_router.dart';
-import 'package:photo_app/data/models/login_model.dart';
+
 import 'package:photo_app/data/service/local_data_storage.dart';
 import 'package:photo_app/presentation/components/theme.dart';
-import 'package:realm/realm.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class CustomAlertDialog extends StatelessWidget {
   const CustomAlertDialog({
@@ -14,8 +13,7 @@ class CustomAlertDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final config = Configuration.local([LoginModel.schema]);
-    final realm = Realm(config);
+    final localDataStorage = GetIt.I<LocalDataStorageImpl>();
     final customColors = Theme.of(context).extension<CustomColors>();
     return AlertDialog(
       backgroundColor: customColors!.background,
@@ -49,10 +47,8 @@ class CustomAlertDialog extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                   color: customColors.primary)),
           onPressed: () async {
-            final localDataStorage = LocalDataStorageImpl(realm);
             await localDataStorage.removeUserFromCache();
-            // final prefs = await SharedPreferences.getInstance();
-            // await prefs.remove(LocalDataStorageImpl.cacheUser);
+
             context.router.pop();
             context.router.replace(const LoginRoute());
           },
