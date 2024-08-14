@@ -1,10 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:meta/meta.dart';
 import 'package:photo_app/data/models/user_model.dart';
 import 'package:photo_app/data/service/local_data_storage.dart';
 import 'package:photo_app/presentation/bloc/splash_state.dart';
-
 part 'splash_event.dart';
 
 @lazySingleton

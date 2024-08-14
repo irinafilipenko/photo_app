@@ -1,74 +1,4 @@
-import 'package:json_annotation/json_annotation.dart';
 import 'package:photo_app/data/models/login_model.dart';
-// import 'package:realm/realm.dart';
-//
-// part 'catalog.realm.dart';
-//
-// part 'user_model.g.dart';
-
-// @JsonSerializable(fieldRename: FieldRename.snake)
-// class UserResponse {
-//   final List<UserModel> results;
-//   const UserResponse({
-//     required this.results,
-//   });
-//
-//   factory UserResponse.fromJson(Map<String, Object?> json) =>
-//       _$UserResponseFromJson(json);
-//
-//   Map<String, Object?> toJson() => _$UserResponseToJson(this);
-// }
-//
-// @JsonSerializable(fieldRename: FieldRename.snake)
-// class UserModel {
-//   final String email;
-//   final Name name;
-//   final Picture picture;
-//
-//   const UserModel({
-//     required this.email,
-//     required this.name,
-//     required this.picture,
-//   });
-//
-//   factory UserModel.fromJson(Map<String, Object?> json) =>
-//       _$UserModelFromJson(json);
-//
-//   Map<String, Object?> toJson() => _$UserModelToJson(this);
-// }
-//
-// @JsonSerializable(fieldRename: FieldRename.snake)
-// class Name {
-//   final String first;
-//   final String last;
-//
-//   const Name({
-//     required this.first,
-//     required this.last,
-//   });
-//
-//   factory Name.fromJson(Map<String, dynamic> json) => _$NameFromJson(json);
-//
-//   Map<String, dynamic> toJson() => _$NameToJson(this);
-// }
-//
-// @JsonSerializable(fieldRename: FieldRename.snake)
-// class Picture {
-//   final String large;
-//   final String medium;
-//   final String thumbnail;
-//
-//   const Picture({
-//     required this.large,
-//     required this.medium,
-//     required this.thumbnail,
-//   });
-//
-//   factory Picture.fromJson(Map<String, dynamic> json) =>
-//       _$PictureFromJson(json);
-//
-//   Map<String, dynamic> toJson() => _$PictureToJson(this);
-// }
 
 class UserResponse {
   final List<UserModel> results;
@@ -120,7 +50,6 @@ class UserModel {
     );
   }
 
-  // Метод для преобразования _LoginModel обратно в UserModel
   factory UserModel.fromLoginModel(LoginModel loginModel) {
     return UserModel(
       email: loginModel.email,

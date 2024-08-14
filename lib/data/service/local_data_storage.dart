@@ -17,22 +17,18 @@ class LocalDataStorageImpl implements LocalDataStorage {
 
   @override
   Future<LoginModel?> getUserFromCache() async {
-    print("getUserFromCache");
     final users = realm.all<LoginModel>();
     if (users.isNotEmpty) {
       final user = users.first;
-      print("User found: ${user.email}");
+
       return user;
     } else {
-      print("User not found in cache");
       return null;
     }
   }
 
   @override
   Future<void> userToCache(LoginModel user) async {
-    print("userToCache");
-    print(user.email);
     realm.write(() {
       realm.add(user, update: true);
     });

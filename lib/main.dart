@@ -1,23 +1,16 @@
-import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:photo_app/app_router.dart';
-import 'package:photo_app/data/models/login_model.dart';
-import 'package:photo_app/data/service/local_data_storage.dart';
 import 'package:photo_app/injectable_config.dart';
 import 'package:photo_app/presentation/bloc/auth_bloc.dart';
 import 'package:photo_app/presentation/bloc/photo_bloc.dart';
 import 'package:photo_app/presentation/bloc/splash_bloc.dart';
 import 'package:photo_app/presentation/components/theme.dart';
-import 'package:photo_app/data/repositories/photo_repository.dart';
-import 'package:photo_app/data/repositories/user_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:realm/realm.dart';
 
 void main() {
   configureDependencies();
-
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
