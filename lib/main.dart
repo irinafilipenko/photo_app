@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:photo_app/app_router.dart';
+import 'package:photo_app/data/models/login_model.dart';
 import 'package:photo_app/data/service/local_data_storage.dart';
 import 'package:photo_app/presentation/bloc/auth_bloc.dart';
 import 'package:photo_app/presentation/bloc/photo_bloc.dart';
@@ -9,9 +10,15 @@ import 'package:photo_app/data/repositories/photo_repository.dart';
 import 'package:photo_app/data/repositories/user_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:realm/realm.dart';
 
 void main() {
-  final localDataStorage = LocalDataStorageImpl();
+  final config = Configuration.local([LoginModel.schema]);
+  final realm = Realm(config);
+
+  // Создаем экземпляр LocalDataStorageImpl и передаем ему Realm
+  final localDataStorage = LocalDataStorageImpl(realm);
+
   final dio = Dio();
   final userRepository = UserRepository(dio, localDataStorage);
   final photoRepository = PhotoRepository(dio);

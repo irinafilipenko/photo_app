@@ -19,9 +19,22 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     try {
       final user = await userRepository.login(event.email, event.password);
       emit(AuthAuthenticated(user: user));
-      await userRepository.saveUserToCache(user);
+
+      final loginModel = user.toLoginModel();
+      await userRepository.saveUserToCache(loginModel);
     } catch (error) {
       emit(const AuthError("Login failed. Please try again."));
     }
   }
+
+  // void _onLoginRequested(LoginRequested event, Emitter<AuthState> emit) async {
+  //   emit(AuthLoading());
+  //   try {
+  //     final user = await userRepository.login(event.email, event.password);
+  //     emit(AuthAuthenticated(user: user));
+  //     await userRepository.saveUserToCache(user);
+  //   } catch (error) {
+  //     emit(const AuthError("Login failed. Please try again."));
+  //   }
+  // }
 }

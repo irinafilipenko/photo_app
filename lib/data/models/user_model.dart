@@ -1,7 +1,11 @@
 import 'package:json_annotation/json_annotation.dart';
-
-// part 'user_model.g.dart';
+import 'package:photo_app/data/models/login_model.dart';
+// import 'package:realm/realm.dart';
 //
+// part 'catalog.realm.dart';
+//
+// part 'user_model.g.dart';
+
 // @JsonSerializable(fieldRename: FieldRename.snake)
 // class UserResponse {
 //   final List<UserModel> results;
@@ -106,5 +110,22 @@ class UserModel {
         'large': avatarUrl,
       },
     };
+  }
+
+  LoginModel toLoginModel() {
+    return LoginModel(
+      email,
+      fullName,
+      avatarUrl,
+    );
+  }
+
+  // Метод для преобразования _LoginModel обратно в UserModel
+  factory UserModel.fromLoginModel(LoginModel loginModel) {
+    return UserModel(
+      email: loginModel.email,
+      fullName: loginModel.fullName,
+      avatarUrl: loginModel.avatarUrl,
+    );
   }
 }

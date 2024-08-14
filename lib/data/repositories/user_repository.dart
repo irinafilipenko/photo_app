@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:photo_app/data/models/login_model.dart';
 import 'package:photo_app/data/models/user_model.dart';
 import 'package:photo_app/data/service/local_data_storage.dart';
 import 'package:photo_app/data/service/user_service.dart';
@@ -20,7 +21,7 @@ class UserRepository {
     }
   }
 
-  Future<void> saveUserToCache(UserModel user) async {
+  Future<void> saveUserToCache(LoginModel user) async {
     await _localDataStorage.userToCache(user);
   }
 }
