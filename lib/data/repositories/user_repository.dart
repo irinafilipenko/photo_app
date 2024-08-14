@@ -1,11 +1,15 @@
 import 'package:dio/dio.dart';
-import 'package:photo_app/models/user_model.dart';
-import 'package:photo_app/service/user_service.dart';
+import 'package:photo_app/data/models/user_model.dart';
+import 'package:photo_app/data/service/local_data_storage.dart';
+import 'package:photo_app/data/service/user_service.dart';
 
 class UserRepository {
   final UserService _userService;
+  final LocalDataStorage _localDataStorage;
 
-  UserRepository(Dio dio) : _userService = UserService(dio);
+  UserRepository(Dio dio, LocalDataStorage localDataStorage)
+      : _userService = UserService(dio),
+        _localDataStorage = localDataStorage;
 
   Future<UserModel> login(String email, String password) async {
     try {
@@ -14,6 +18,10 @@ class UserRepository {
     } catch (e) {
       throw Error();
     }
+  }
+
+  Future<void> saveUserToCache(UserModel user) async {
+    await _localDataStorage.userToCache(user);
   }
 }
 

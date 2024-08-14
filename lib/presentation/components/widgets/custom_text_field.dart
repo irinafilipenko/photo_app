@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:photo_app/components/theme.dart';
+import 'package:photo_app/presentation/components/theme.dart';
 
 class CustomTextField extends StatelessWidget {
   final TextEditingController controller;

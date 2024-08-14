@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:photo_app/components/theme.dart';
+import 'package:photo_app/presentation/components/theme.dart';
 
 customSnackBar({required String message, required context}) async {
   final customColors = Theme.of(context).extension<CustomColors>();

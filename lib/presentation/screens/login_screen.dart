@@ -2,11 +2,11 @@ import 'dart:async';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:photo_app/app_router.dart';
-import 'package:photo_app/bloc/auth_bloc.dart';
-import 'package:photo_app/components/widgets/custom_button.dart';
-import 'package:photo_app/components/widgets/custom_text_field.dart';
-import 'package:photo_app/components/theme.dart';
-import 'package:photo_app/utils/validation.dart';
+import 'package:photo_app/presentation/bloc/auth_bloc.dart';
+import 'package:photo_app/presentation/components/widgets/custom_button.dart';
+import 'package:photo_app/presentation/components/widgets/custom_text_field.dart';
+import 'package:photo_app/presentation/components/theme.dart';
+import 'package:photo_app/presentation/utils/validation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

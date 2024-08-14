@@ -1,4 +1,4 @@
-import 'package:photo_app/screens/main_screen.dart';
+import 'package:photo_app/presentation/screens/main_screen.dart';
 import 'package:flutter/material.dart';
 
 Route createRoute() {

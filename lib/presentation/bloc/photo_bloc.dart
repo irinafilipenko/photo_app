@@ -1,7 +1,7 @@
 import 'package:bloc_action_listener/bloc_actions_mixin.dart';
 
-import 'package:photo_app/models/photo_model.dart';
-import 'package:photo_app/repositories/photo_repository.dart';
+import 'package:photo_app/data/models/photo_model.dart';
+import 'package:photo_app/data/repositories/photo_repository.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 

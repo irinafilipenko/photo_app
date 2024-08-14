@@ -1,4 +1,4 @@
-import 'package:photo_app/models/photo_model.dart';
+import 'package:photo_app/data/models/photo_model.dart';
 
 List<Map<String, dynamic>> groupPhotosByAlphabet(List<PhotoModel> photos) {
   photos.sort(

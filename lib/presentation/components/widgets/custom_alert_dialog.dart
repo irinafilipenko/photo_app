@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:photo_app/app_router.dart';
-import 'package:photo_app/components/theme.dart';
+import 'package:photo_app/presentation/components/theme.dart';
 
 class CustomAlertDialog extends StatelessWidget {
   const CustomAlertDialog({

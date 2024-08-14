@@ -2,14 +2,14 @@
 
 import 'package:auto_route/auto_route.dart';
 import 'package:bloc_action_listener/bloc_action_listener.dart';
-import 'package:photo_app/bloc/photo_bloc.dart';
-import 'package:photo_app/components/widgets/custom_card.dart';
-import 'package:photo_app/components/widgets/custom_driver.dart';
-import 'package:photo_app/components/theme.dart';
+import 'package:photo_app/presentation/bloc/photo_bloc.dart';
+import 'package:photo_app/presentation/components/widgets/custom_card.dart';
+import 'package:photo_app/presentation/components/widgets/custom_driver.dart';
+import 'package:photo_app/presentation/components/theme.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:photo_app/utils/group_photos.dart';
+import 'package:photo_app/presentation/utils/group_photos.dart';
 
 @RoutePage()
 class MainScreen extends StatelessWidget {

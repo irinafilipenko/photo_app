@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:photo_app/components/theme.dart';
-import 'package:photo_app/models/photo_model.dart';
+import 'package:photo_app/presentation/components/theme.dart';
+import 'package:photo_app/data/models/photo_model.dart';
 
 class CustomCard extends StatelessWidget {
   final PhotoModel photo;

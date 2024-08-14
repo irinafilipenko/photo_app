@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:photo_app/components/constants.dart';
-import 'package:photo_app/models/photo_model.dart';
+import 'package:photo_app/presentation/components/constants.dart';
+import 'package:photo_app/data/models/photo_model.dart';
 import 'package:retrofit/retrofit.dart';
 
 part 'photo_service.g.dart';
