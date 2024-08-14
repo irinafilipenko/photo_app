@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:auto_route/auto_route.dart';
 import 'package:photo_app/bloc/auth_bloc.dart';
 import 'package:photo_app/components/widgets/custom_button.dart';
 import 'package:photo_app/components/widgets/custom_sneck_bar.dart';
@@ -10,6 +11,7 @@ import 'package:photo_app/utils/validation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+@RoutePage()
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 

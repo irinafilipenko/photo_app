@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:photo_app/app_router.dart';
 import 'package:photo_app/bloc/auth_bloc.dart';
 import 'package:photo_app/bloc/photo_bloc.dart';
 import 'package:photo_app/components/theme.dart';
@@ -13,17 +14,24 @@ void main() {
   final dio = Dio();
   final userRepository = UserRepository(dio);
   final photoRepository = PhotoRepository(dio);
+  final _appRouter = AppRouter();
 
-  runApp(
-      MyApp(userRepository: userRepository, photoRepository: photoRepository));
+  runApp(MyApp(
+      appRouter: _appRouter,
+      userRepository: userRepository,
+      photoRepository: photoRepository));
 }
 
 class MyApp extends StatelessWidget {
   final UserRepository userRepository;
   final PhotoRepository photoRepository;
+  final AppRouter appRouter;
 
   const MyApp(
-      {super.key, required this.userRepository, required this.photoRepository});
+      {super.key,
+      required this.appRouter,
+      required this.userRepository,
+      required this.photoRepository});
 
   @override
   Widget build(BuildContext context) {
@@ -37,17 +45,18 @@ class MyApp extends StatelessWidget {
               PhotoBloc(photoRepository: photoRepository)..add(FetchPhoto()),
         ),
       ],
-      child: MaterialApp(
+      child: MaterialApp.router(
         title: 'Photo App',
         debugShowCheckedModeBanner: false,
         theme: lightTheme, // Apply the light theme
         darkTheme: darkTheme, // Apply the dark theme
         themeMode: ThemeMode.system,
-        initialRoute: '/',
-        routes: {
-          '/': (context) => const LoginScreen(),
-          '/main': (context) => const MainScreen(),
-        },
+        routerConfig: appRouter.config(),
+        // initialRoute: '/',
+        // routes: {
+        //   '/': (context) => const LoginScreen(),
+        //   '/main': (context) => const MainScreen(),
+        // },
       ),
     );
   }
