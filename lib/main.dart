@@ -5,8 +5,6 @@ import 'package:photo_app/bloc/photo_bloc.dart';
 import 'package:photo_app/components/theme.dart';
 import 'package:photo_app/repositories/photo_repository.dart';
 import 'package:photo_app/repositories/user_repository.dart';
-import 'package:photo_app/screens/login_screen.dart';
-import 'package:photo_app/screens/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

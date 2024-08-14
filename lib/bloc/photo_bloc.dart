@@ -1,6 +1,5 @@
-import 'package:bloc_action_listener/bloc_action_listener.dart';
 import 'package:bloc_action_listener/bloc_actions_mixin.dart';
-import 'package:photo_app/components/widgets/show_sneck_bar_action.dart';
+
 import 'package:photo_app/models/photo_model.dart';
 import 'package:photo_app/repositories/photo_repository.dart';
 import 'package:bloc/bloc.dart';

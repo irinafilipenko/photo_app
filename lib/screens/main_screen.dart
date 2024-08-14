@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:auto_route/auto_route.dart';
 import 'package:bloc_action_listener/bloc_action_listener.dart';
 import 'package:photo_app/bloc/photo_bloc.dart';
