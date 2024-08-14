@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:auto_route/auto_route.dart';
+import 'package:photo_app/app_router.dart';
 import 'package:photo_app/bloc/auth_bloc.dart';
 import 'package:photo_app/components/widgets/custom_button.dart';
 import 'package:photo_app/components/widgets/custom_sneck_bar.dart';
@@ -86,6 +87,7 @@ class LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final router = context.router;
     final customColors = Theme.of(context).extension<CustomColors>();
     return Scaffold(
       body: BlocListener<AuthBloc, AuthState>(
@@ -96,8 +98,7 @@ class LoginScreenState extends State<LoginScreen> {
                 _isLoading = false;
               });
               _resetFields();
-              Navigator.of(context).pushReplacement(createRoute());
-              // Navigator.pushReplacementNamed(context, '/main');
+              router.push(const MainRoute());
             });
           } else if (state is AuthError) {
             setState(() {
