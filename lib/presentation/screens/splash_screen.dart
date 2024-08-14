@@ -29,16 +29,14 @@ class SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return BlocListener<SplashBloc, SplashState>(
         listener: (context, state) {
+          print('Current state: $state');
+
           if (state is SplashAuthenticated) {
             print("SplashAuthenticated");
             context.router.push(const MainRoute());
-            // context.go(AppRoutesStings.homePath);
-            // Navigator.pushReplacementNamed(context, '/home');
           } else if (state is SplashError) {
             print("SplashError");
             context.router.push(const LoginRoute());
-            // context.go(AppRoutesStings.loginPath);
-            // Navigator.pushReplacementNamed(context, '/login');
           }
         },
         child: Container(color: Colors.blue));

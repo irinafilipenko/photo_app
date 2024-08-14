@@ -24,12 +24,17 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
     try {
       final user = await localDataStorage.getUserFromCache();
       if (user != null) {
+        print("User found: ${user.email}");
         // Если пользователь найден, отправляем состояние аутентификации
-        emit(SplashAuthenticated(user: user!));
+        emit(SplashAuthenticated(user: user));
+      } else {
+        print("User not found, emitting SplashError");
+        emit(SplashError("User not found"));
       }
     } catch (error) {
       // В случае ошибки отправляем состояние ошибки
-      emit(SplashError("Error"));
+      print("Error occurred: $error");
+      emit(SplashError("Error: $error"));
     }
   }
 }

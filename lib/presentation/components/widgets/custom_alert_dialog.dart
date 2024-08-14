@@ -1,7 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:photo_app/app_router.dart';
+import 'package:photo_app/data/service/local_data_storage.dart';
 import 'package:photo_app/presentation/components/theme.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class CustomAlertDialog extends StatelessWidget {
   const CustomAlertDialog({
@@ -42,7 +44,9 @@ class CustomAlertDialog extends StatelessWidget {
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
                   color: customColors.primary)),
-          onPressed: () {
+          onPressed: () async {
+            final prefs = await SharedPreferences.getInstance();
+            await prefs.remove(LocalDataStorageImpl.cacheUser);
             context.router.pop();
             context.router.replace(const LoginRoute());
             // Navigator.of(context).pop();
