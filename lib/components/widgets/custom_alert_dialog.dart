@@ -1,4 +1,6 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:photo_app/app_router.dart';
 import 'package:photo_app/components/theme.dart';
 
 class CustomAlertDialog extends StatelessWidget {
@@ -41,8 +43,10 @@ class CustomAlertDialog extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                   color: customColors.primary)),
           onPressed: () {
-            Navigator.of(context).pop();
-            Navigator.pushReplacementNamed(context, '/');
+            context.router.pop();
+            context.router.replace(const LoginRoute());
+            // Navigator.of(context).pop();
+            // Navigator.pushReplacementNamed(context, '/');
           },
         ),
       ],
